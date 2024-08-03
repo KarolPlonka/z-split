@@ -21,7 +21,6 @@ export function sortFirstLender(lenders: Lender[]): void {
 export function settleUp(persons: Person[]): CalculatedDebts {
     const total: number = persons.reduce((acc, person) => acc + person.contribution, 0);
     const costPerPerson: number = total / persons.length;
-    console.log('Cost per person:', costPerPerson);
     let debts: Debt[] = [];
 
     let sortedLenders: Lender[] = persons
@@ -30,11 +29,7 @@ export function settleUp(persons: Person[]): CalculatedDebts {
         .sort((a, b) => a.amountLeft - b.amountLeft)
         .reverse();
 
-
-    console.log('Sorted lenders:', sortedLenders);
-
     const borrowers: Person[] = persons.filter(person => person.contribution < costPerPerson);
-    console.log('Borrowers:', borrowers);
 
     let unsettleableDebt: number = 0;
     borrowers.forEach( (borrower) => {
@@ -65,10 +60,10 @@ export function settleUp(persons: Person[]): CalculatedDebts {
             }
         }
     })
-    console.log('Unsettleable debt:', unsettleableDebt);
     
     return {
         debts: debts,
-        unsettleableDebt: Math.round(unsettleableDebt * 100) / 100
+        unsettleableDebt: Math.round(unsettleableDebt * 100) / 100,
+        costPerPerson: Math.round(costPerPerson * 100) / 100
     };
 }

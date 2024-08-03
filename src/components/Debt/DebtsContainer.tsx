@@ -17,6 +17,12 @@ export const DebtsContainer: React.FC<{ calculatedDebts: CalculatedDebts }> = ({
             </div>
             
             <hr/>
+
+            <div className='debt-container__unsettleable-debt'>
+                Cost per person: {calculatedDebts.costPerPerson}
+            </div>
+
+            <hr/>
             <div className='debt-container__unsettleable-debt'>
                 Unsettleable Debt: {calculatedDebts.unsettleableDebt}
             </div>

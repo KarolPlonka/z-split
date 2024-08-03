@@ -9,4 +9,5 @@ export type Debt = {
 export type CalculatedDebts = {
     debts: Debt[];
     unsettleableDebt: number;
+    costPerPerson: number;
 }

@@ -4,8 +4,8 @@ import { PersonCard } from './PersonCard';
 
 import './PersonsContainer.scss';
 
-export const PersonsContainer: React.FC<{ persons: Person[] }> = ({ persons }) => {
-    const [localPersons, setLocalPersons] = useState([...persons]);
+export const PersonsContainer: React.FC<{ persons: Person[], setPersons: (persons: Person[]) => void }> = ({ persons, setPersons }) => {
+    // const [localPersons, setLocalPersons] = useState([...persons]);
 
     const addPerson = () => {
         const newPerson = {
@@ -14,23 +14,31 @@ export const PersonsContainer: React.FC<{ persons: Person[] }> = ({ persons }) =
             contribution: 0,
         };
         persons.push(newPerson);
-        setLocalPersons([...persons]);
+        setPersons([...persons]);
         console.log(persons);
+
     };
 
     const removePerson = (index: number) => {
         persons.splice(index, 1);
-        setLocalPersons([...persons]);
+        setPersons([...persons]);
     }
+
+    const updatePerson = (index: number, updatedPerson: Person) => {
+        persons[index] = updatedPerson;
+        setPersons([...persons]);
+    }
+
+
 
 
     return (
         <div className='persons-container'>
             <div className='persons-container__persons-list'>
-                {localPersons.map((person, i) => (
+                {persons.map((person, i) => (
                     <div className='persons-container__person-card-container' key={i}>
 
-                        <PersonCard person={person} />
+                        <PersonCard person={person} updatePerson={updatePerson} />
 
                         <button
                             className='persons-container__remove-person-button' 

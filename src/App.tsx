@@ -13,15 +13,24 @@ import { DebtsContainer } from './components/Debt/DebtsContainer';
 
 function App() {
     const [calculatedDebts, setCalculatedDebts] = useState<CalculatedDebts | null>(null);
-    <h1>Ż-SPLIT</h1>
 
-    let persons: Person[] = [
-        { id: 0, name: 'David', contribution: 0 },
-        { id: 1, name: 'Elijah', contribution: 0 },
-        // { id: 2, name: 'chuj', contribution: 0 },
-        // { id: 3, name: 'dupa', contribution: 0 },
-        // { id: 4, name: 'cipa', contribution: 0 },
+    // PROD
+    // let defaultPersons: Person[] = [
+    //     { id: 0, name: 'David', contribution: 0 },
+    //     { id: 1, name: 'Elijah', contribution: 0 },
+    // ]
+    
+    // DEBUG
+    let defaultPersons: Person[] = [
+        { id: 0, name: 'David', contribution: 50 },
+        { id: 1, name: 'Elijah', contribution: 30 },
+        { id: 2, name: 'chuj', contribution: 0 },
+        { id: 3, name: 'dupa', contribution: 0 },
+        { id: 4, name: 'cipa', contribution: 0 },
     ];
+
+    const [persons, setPersons] = useState(defaultPersons);
+
 
     const settleUpDebts = () => {
         const calculatedDebts = settleUp(persons);
@@ -30,7 +39,8 @@ function App() {
 
     return (
         <div className="App">
-            <PersonsContainer persons={persons} />
+            <h1>Ż-SPLIT</h1>
+            <PersonsContainer persons={persons} setPersons={setPersons} />
 
             <hr />
 

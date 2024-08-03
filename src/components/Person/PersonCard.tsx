@@ -4,18 +4,13 @@ import { Person } from './PersonType';
 import './PersonCard.scss';
 
 
-export const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
-    const [name, setName] = useState(person.name);
-    const [contribution, setContribution] = useState(person.contribution);
+export const PersonCard: React.FC<{ person: Person, updatePerson: (index: number, updatedPerson: Person) => void }> = ({ person, updatePerson }) => {
+    const updateName = (name: string) => {
+        updatePerson(person.id, { ...person, name });
+    };
 
-    const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        person.name = e.target.value;
-        setName(e.target.value);
-    }
-
-    const onContributionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        person.contribution = Number(e.target.value);
-        setContribution(Number(e.target.value));
+    const updateContribution = (contribution: number) => {
+        updatePerson(person.id, { ...person, contribution });
     }
 
     return (
@@ -23,14 +18,14 @@ export const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
             <input
                 type="text"
                 className='person-card__name'
-                value={name}
-                onChange={onNameChange}
+                value={person.name}
+                onChange={(e) => updateName(e.target.value)}
             />
             <input
                 type="number"
                 className='person-card__contribution'
-                value={contribution}
-                onChange={onContributionChange}
+                value={person.contribution}
+                onChange={(e) => updateContribution(Number(e.target.value))}
             />
         </div>
     );
