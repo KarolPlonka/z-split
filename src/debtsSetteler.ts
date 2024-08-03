@@ -1,20 +1,5 @@
-export type Person = {
-    id: number;
-    name: string;
-    contribution: number;
-}
-
-export type Debt = {
-    borrower: Person;
-    lender: Person;
-    amount: number;
-}
-
-export type settledDebts = {
-    debts: Debt[];
-    unsettleableDebt: number;
-}
-
+import { Person } from './components/Person/PersonType';
+import { Debt, CalculatedDebts } from './components/Debt/DebtType';
 
 type Lender = {
     person: Person;
@@ -33,7 +18,7 @@ export function sortFirstLender(lenders: Lender[]): void {
 }
 
 
-export function settleUp(persons: Person[]): settledDebts {
+export function settleUp(persons: Person[]): CalculatedDebts {
     const total: number = persons.reduce((acc, person) => acc + person.contribution, 0);
     const costPerPerson: number = total / persons.length;
     console.log('Cost per person:', costPerPerson);
