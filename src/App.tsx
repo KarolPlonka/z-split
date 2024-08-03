@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import logo from './logo.svg';
+import './assets/scss/_base.scss';
+
 import './App.scss';
-import './assets/scss/_shared.scss';
 
 import { Debt, CalculatedDebts } from './components/Debt/DebtType';
 import { Person } from './components/Person/PersonType';
@@ -39,7 +40,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Ż-SPLIT</h1>
+            <h1 className='header'>Ż-SPLIT</h1>
             <PersonsContainer persons={persons} setPersons={setPersons} />
 
             <hr />

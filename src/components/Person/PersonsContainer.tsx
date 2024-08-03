@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { FiX, FiPlus } from "react-icons/fi";
+
 import { Person } from './PersonType';
 import { PersonCard } from './PersonCard';
-
 import './PersonsContainer.scss';
 
 export const PersonsContainer: React.FC<{ persons: Person[], setPersons: (persons: Person[]) => void }> = ({ persons, setPersons }) => {
@@ -10,7 +11,7 @@ export const PersonsContainer: React.FC<{ persons: Person[], setPersons: (person
     const addPerson = () => {
         const newPerson = {
             id: persons.length,
-            name: '',
+            name: 'person ' + persons.length.toString(),
             contribution: 0,
         };
         persons.push(newPerson);
@@ -31,7 +32,6 @@ export const PersonsContainer: React.FC<{ persons: Person[], setPersons: (person
 
 
 
-
     return (
         <div className='persons-container'>
             <div className='persons-container__persons-list'>
@@ -41,17 +41,19 @@ export const PersonsContainer: React.FC<{ persons: Person[], setPersons: (person
                         <PersonCard person={person} updatePerson={updatePerson} />
 
                         <button
-                            className='persons-container__remove-person-button' 
+                            className='persons-container__button-remove-person' 
                             onClick={() => removePerson(i)}
                         >
-                            Remove Person
+                            <FiX className='persons-container__button-remove-person__icon'/>
                         </button>
 
                     </div>
                 ))}
             </div>
 
-            <button className='persons-container__add-person-button' onClick={addPerson}>Add Person</button>
+            <button className='persons-container__button-add-person' onClick={addPerson}>
+                <FiPlus className='persons-container__button-add-person__icon'/>
+            </button>
         </div>
     );
 };
