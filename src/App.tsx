@@ -25,9 +25,6 @@ function App() {
     let defaultPersons: Person[] = [
         { id: 0, name: 'David', contribution: 50 },
         { id: 1, name: 'Elijah', contribution: 30 },
-        { id: 2, name: 'chuj', contribution: 0 },
-        { id: 3, name: 'dupa', contribution: 0 },
-        { id: 4, name: 'cipa', contribution: 0 },
     ];
 
     const [persons, setPersons] = useState(defaultPersons);
