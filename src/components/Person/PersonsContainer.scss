@@ -1,0 +1,84 @@
+.persons-container {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background-color: var(--primary-color);
+  border: 4px solid var(--border);
+  box-shadow:
+      inset -4px -4px 0 rgba(0, 0, 0, 0.3),
+      inset 4px 4px 0 rgba(255, 255, 255, 0.1);
+
+  &__persons-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+  }
+
+  &__button-add-person {
+      border: 4px solid var(--border);
+      border-radius: 8px;
+      width: 120px;
+      background-color: var(--secondary-color);
+      padding: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+          transform: scale(1.05);
+          background-color: var(--success);
+          border-color: var(--gold);
+      }
+
+      &__icon {
+          font-size: 24px;
+          color: var(--gold);
+      }
+
+      &:hover &__icon {
+          color: var(--text-primary);
+      }
+  }
+
+  &__button-remove-person {
+      border: 4px solid var(--border);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      background-color: var(--secondary-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &__icon {
+          font-size: 20px;
+          color: var(--error);
+      }
+
+      &:hover {
+          transform: scale(1.05);
+          background-color: var(--error);
+          border-color: var(--gold);
+      }
+
+      &:hover &__icon {
+          color: var(--text-primary);
+      }
+  }
+}
+
+.persons-container__person-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}

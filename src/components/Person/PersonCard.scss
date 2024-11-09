@@ -1,0 +1,128 @@
+.person-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  background-color: var(--secondary-color);
+  border: 4px solid var(--border);
+  box-shadow:
+    inset -4px -4px 0 rgba(0, 0, 0, 0.3),
+    inset 4px 4px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  // Remove button
+  &__remove {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    border: 3px solid var(--border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 2;
+
+    &:hover {
+      background-color: var(--error);
+      border-color: var(--accent-color);
+      transform: scale(1.1);
+    }
+
+    &-icon {
+      color: var(--error);
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+
+    &:hover &-icon {
+      color: var(--text-primary);
+    }
+  }
+
+  // Main content container
+  &__content {
+    padding: 16px;
+  }
+
+  // Sprite section
+  &__sprite-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+    padding: 16px;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    border: 2px solid var(--border);
+  }
+
+  &__sprite {
+    position: relative;
+    width: 50px;
+    height: 72px;
+    image-rendering: pixelated;
+  }
+
+  &__frame {
+    width: 50px;
+    height: 72px;
+    background: url(https://s.cdpn.io/79/sprite-steps.png) no-repeat left top;
+    animation: sprite-animation 1s steps(10) infinite;
+    image-rendering: pixelated;
+  }
+
+  // Inputs section
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__name-container {
+    width: 100%;
+  }
+
+  &__contribution {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__input-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    color: var(--gold);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+  }
+
+  &__input {
+    border: 3px solid var(--border);
+    background-color: var(--primary-color);
+    color: var(--text-primary);
+    padding: 8px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    transition: all 0.2s ease;
+
+    &--contribution {
+      width: 80px;
+      text-align: right;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 8px rgba(255, 107, 107, 0.3);
+    }
+  }
+}
+
+@keyframes sprite-animation {
+  0% { background-position: 0px 0; }
+  100% { background-position: -500px 0; }
+}

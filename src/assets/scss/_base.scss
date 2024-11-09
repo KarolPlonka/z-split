@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  // Pixel Art Theme Colors
+  --primary-color: #1a1523;     // Dark purple/blue background
+  --secondary-color: #413b5e;   // Medium purple for cards
+  --accent-color: #ff6b6b;      // Vibrant red/coral
+  --text-primary: #ffffff;      // White text
+  --text-secondary: #9e9e9e;    // Gray text
+
+  // Game UI Colors
+  --gold: #ffd700;          // For coins/currency
+  --success: #58c164;       // Green for positive actions
+  --error: #ff4757;         // Red for negative actions
+  --border: #645991;        // Border color
+
+  // Pixel Art Measurements
+  --pixel-size: 4px;
+  --pixel-border: 4px;
+
+  // Shadows
+  --shadow-dark: rgba(0, 0, 0, 0.4);
+  --shadow-light: rgba(255, 255, 255, 0.1);
+
+  // Animation Speeds
+  --animation-speed-slow: 2s;
+  --animation-speed-normal: 1s;
+  --animation-speed-fast: 0.3s;
+}
+
+// Pixel Art Mixins
+@mixin pixel-borders {
+  border: var(--pixel-border) solid var(--border);
+  box-shadow:
+    inset -4px -4px 0 var(--shadow-dark),
+    inset 4px 4px 0 var(--shadow-light);
+}
+
+@mixin pixel-text {
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  text-shadow: 2px 2px 0 var(--shadow-dark);
+}
+
+@mixin pixel-button {
+  @include pixel-borders;
+  @include pixel-text;
+  padding: calc(var(--pixel-size) * 2);
+  background-color: var(--secondary-color);
+  cursor: pointer;
+  transition: all var(--animation-speed-fast);
+
+  &:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    filter: brightness(0.8);
+  }
+}
+
+@mixin pixel-container {
+  @include pixel-borders;
+  background-color: var(--secondary-color);
+  padding: calc(var(--pixel-size) * 4);
+  margin: calc(var(--pixel-size) * 2);
+}
+
+@mixin pixel-input {
+  @include pixel-borders;
+  background-color: var(--primary-color);
+  padding: calc(var(--pixel-size) * 2);
+  font-family: 'Press Start 2P', cursive;
+  color: var(--text-primary);
+  font-size: 12px;
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+}
+
+body {
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  font-family: 'Press Start 2P', cursive;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image:
+    linear-gradient(45deg, var(--shadow-dark) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--shadow-dark) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--shadow-dark) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--shadow-dark) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+// Animation Keyframes
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+// Sprite Animation
+@keyframes sprite-animation {
+  0% { background-position: 0 0; }
+  100% { background-position: -500px 0; }
+}

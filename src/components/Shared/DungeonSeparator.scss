@@ -1,0 +1,140 @@
+.dungeon-separator {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  &__rune {
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-color);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    position: relative;
+    animation: rune-glow 3s ease-in-out infinite;
+    box-shadow: 0 0 8px var(--accent-color);
+
+    // Side runes
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 4px;
+      height: 4px;
+      background: var(--accent-color);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      transform: translateY(-50%);
+      opacity: 0.6;
+    }
+
+    &::before {
+      left: -24px;
+      animation: side-rune-glow 3s ease-in-out infinite 0.5s;
+    }
+
+    &::after {
+      right: -24px;
+      animation: side-rune-glow 3s ease-in-out infinite 1s;
+    }
+  }
+
+  &__line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 4px,
+        var(--accent-color) 4px,
+        var(--accent-color) 6px
+      );
+      opacity: 0.2;
+    }
+  }
+
+  // Floating particles
+  &__particles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 30px;
+    transform: translate(-50%, -50%);
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--accent-color);
+      opacity: 0;
+    }
+
+    &::before {
+      left: 30%;
+      animation: float-up 2s ease-in-out infinite;
+    }
+
+    &::after {
+      right: 30%;
+      animation: float-up 2s ease-in-out infinite 1s;
+    }
+  }
+}
+
+@keyframes rune-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px var(--accent-color));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 6px var(--accent-color));
+    transform: scale(1.2);
+  }
+}
+
+@keyframes side-rune-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-50%) scale(1.2);
+  }
+}
+
+@keyframes line-pulse {
+  0%, 100% {
+    opacity: 0.2;
+    width: 100%;
+  }
+  50% {
+    opacity: 0.4;
+    width: 120%;
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, -15px);
+  }
+}

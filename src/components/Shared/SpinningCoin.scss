@@ -1,0 +1,32 @@
+.coin-animation {
+  position: relative;
+  display: inline-block;
+}
+
+.coin-frame {
+  background: url(https://i.ibb.co/41gJ1JS/01coin.png) no-repeat left top;
+  animation: frame-animation 1s steps(8) infinite;
+  image-rendering: pixelated;
+
+  &--small {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.coin-value {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Press Start 2P', cursive;
+  color: var(--gold);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+@keyframes frame-animation {
+  0% { background-position: 0 0; }
+  100% { background-position: -480px 0; }
+}
