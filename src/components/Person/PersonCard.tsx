@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FiX } from "react-icons/fi";
 import { Person } from './PersonType';
 import './PersonCard.scss';
@@ -19,9 +19,13 @@ export const PersonCard: React.FC<PersonCardProps> = ({
         updatePerson(person.id, { ...person, name });
     };
 
-    const updateContribution = (contribution: number) => {
+    const updateContribution = (contributionRaw: number|'') => {
+        const contribution = Number(contributionRaw) || 0;
         updatePerson(person.id, { ...person, contribution });
     }
+
+    // This allows the input to be empty
+    const [rawContribution, setRawContribution] = useState<string>(String(person.contribution));
 
     return (
         <div className="person-card">
@@ -60,8 +64,11 @@ export const PersonCard: React.FC<PersonCardProps> = ({
                             id={`contribution-${person.id}`}
                             type="number"
                             className="person-card__input person-card__input--contribution"
-                            value={person.contribution}
-                            onChange={(e) => updateContribution(Number(e.target.value))}
+                            value={rawContribution}
+                            onChange={(e) => {
+                                setRawContribution(e.target.value);
+                                updateContribution(Number(e.target.value));
+                            }}
                         />
                     </div>
                 </div>
