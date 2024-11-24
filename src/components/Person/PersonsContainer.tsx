@@ -13,6 +13,8 @@ export const PersonsContainer: React.FC<{
             id: persons.length,
             name: `Adventurer ${persons.length + 1}`,
             contribution: 0,
+            debts: [],
+            areDebtsSettled: false
         };
         setPersons([...persons, newPerson]);
     };

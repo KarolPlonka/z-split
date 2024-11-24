@@ -1,13 +1,12 @@
 import { Person } from '../Person/PersonType';
 
 export type Debt = {
-    borrower: Person;
     lender: Person;
     amount: number;
 }
 
 export type CalculatedDebts = {
-    debts: Debt[];
+    personsWithSettledDebts: Person[];
     unsettleableDebt: number;
     costPerPerson: number;
 }

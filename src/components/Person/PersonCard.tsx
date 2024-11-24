@@ -72,6 +72,20 @@ export const PersonCard: React.FC<PersonCardProps> = ({
                         />
                     </div>
                 </div>
+
+                {person.debts.length > 0 && (
+                <div className="person-card__debts">
+                    <ul className="person-card__debts-list">
+                        {person.debts.map((debt, i) => (
+                            <li key={i} className="person-card__debt">
+                                Owes {debt.lender.name} {debt.amount}
+                                <SpinningCoin size="small" />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                )}
+                        
             </div>
         </div>
     );

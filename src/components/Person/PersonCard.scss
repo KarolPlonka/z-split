@@ -9,7 +9,6 @@
     inset 4px 4px 0 rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   transition: all 0.3s ease;
-
   // Remove button
   &__remove {
     position: absolute;
@@ -26,29 +25,24 @@
     justify-content: center;
     transition: all 0.2s ease;
     z-index: 2;
-
     &:hover {
       background-color: var(--error);
       border-color: var(--accent-color);
       transform: scale(1.1);
     }
-
     &-icon {
       color: var(--error);
       font-size: 16px;
       transition: all 0.2s ease;
     }
-
     &:hover &-icon {
       color: var(--text-primary);
     }
   }
-
   // Main content container
   &__content {
     padding: 16px;
   }
-
   // Sprite section
   &__sprite-container {
     display: flex;
@@ -59,14 +53,12 @@
     border-radius: 4px;
     border: 2px solid var(--border);
   }
-
   &__sprite {
     position: relative;
     width: 50px;
     height: 72px;
     image-rendering: pixelated;
   }
-
   &__frame {
     width: 50px;
     height: 72px;
@@ -74,24 +66,20 @@
     animation: sprite-animation 1s steps(10) infinite;
     image-rendering: pixelated;
   }
-
   // Inputs section
   &__inputs {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-
   &__name-container {
     width: 100%;
   }
-
   &__contribution {
     display: flex;
     align-items: center;
     gap: 8px;
   }
-
   &__input-label {
     font-family: 'Press Start 2P', cursive;
     font-size: 12px;
@@ -99,7 +87,6 @@
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
     white-space: nowrap;
   }
-
   &__input {
     border: 3px solid var(--border);
     background-color: var(--primary-color);
@@ -108,17 +95,38 @@
     font-family: 'Press Start 2P', cursive;
     font-size: 12px;
     transition: all 0.2s ease;
-
     &--contribution {
       width: 80px;
       text-align: right;
     }
-
     &:focus {
       outline: none;
       border-color: var(--accent-color);
       box-shadow: 0 0 8px rgba(255, 107, 107, 0.3);
     }
+  }
+  // Debts section
+  &__debts {
+    margin-top: 20px;
+    padding: 8px;
+    background-color: var(--primary-color);
+    border: 3px solid var(--border);
+    border-radius: 4px;
+  }
+  &__debts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__debt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--accent-color);
   }
 }
 

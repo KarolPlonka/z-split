@@ -7,6 +7,7 @@ type Lender = {
 }
 
 export function sortFirstLender(lenders: Lender[]): void {
+    // Sort the first lender in the list
     const lenderToSort = lenders[0];
     lenders.splice(0, 1);
 
@@ -21,7 +22,7 @@ export function sortFirstLender(lenders: Lender[]): void {
 export function settleUp(persons: Person[]): CalculatedDebts {
     const total: number = persons.reduce((acc, person) => acc + person.contribution, 0);
     const costPerPerson: number = total / persons.length;
-    let debts: Debt[] = [];
+    // let debts: Debt[] = [];
 
     let sortedLenders: Lender[] = persons
         .filter(person => person.contribution > costPerPerson)
@@ -46,12 +47,11 @@ export function settleUp(persons: Person[]): CalculatedDebts {
             borrowerDebt -= amountToLend;
             sortedLenders[0].amountLeft -= amountToLend;
 
-            debts.push({
-                borrower: borrower,
+            borrower.debts.push({
                 lender: sortedLenders[0].person,
                 amount: Math.round(amountToLend * 100) / 100
             });
-            
+
             if (sortedLenders[0].amountLeft <= 0) {
                 sortedLenders.shift();
             }
@@ -62,7 +62,7 @@ export function settleUp(persons: Person[]): CalculatedDebts {
     })
     
     return {
-        debts: debts,
+        personsWithSettledDebts: persons,
         unsettleableDebt: Math.round(unsettleableDebt * 100) / 100,
         costPerPerson: Math.round(costPerPerson * 100) / 100
     };
